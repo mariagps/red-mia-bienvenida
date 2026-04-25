@@ -31,52 +31,7 @@
     overflow-x: hidden;
   }
 
-  /* ═══ PASSWORD ═══ */
-  #password-screen {
-    position: fixed; inset: 0; z-index: 9999;
-    display: flex; align-items: center; justify-content: center;
-    flex-direction: column; gap: 28px;
-    background: var(--bg-dark); overflow: hidden;
-  }
-  #pw-canvas { position: absolute; inset: 0; z-index: 0; }
-  #password-screen > *:not(canvas) { position: relative; z-index: 1; }
-  #password-screen img {
-    width: 200px;
-    filter: drop-shadow(0 0 50px rgba(59,164,245,0.4));
-    animation: pulse-glow 3s ease-in-out infinite;
-  }
-  @keyframes pulse-glow {
-    0%, 100% { filter: drop-shadow(0 0 50px rgba(59,164,245,0.4)); }
-    50% { filter: drop-shadow(0 0 70px rgba(168,85,247,0.5)); }
-  }
-  #password-screen h2 {
-    color: #fff; font-size: 1.1rem; font-weight: 500;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    text-shadow: 0 1px 8px rgba(0,0,0,0.3);
-  }
-  .pw-box { display: flex; gap: 12px; align-items: center; }
-  .pw-box input {
-    padding: 14px 20px; border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 12px; background: rgba(255,255,255,0.06);
-    color: #fff; font-family: inherit; font-size: 0.95rem;
-    outline: none; width: 240px; backdrop-filter: blur(10px);
-    transition: border-color 0.3s, background 0.3s;
-  }
-  .pw-box input::placeholder { color: rgba(255,255,255,0.35); }
-  .pw-box input:focus { border-color: var(--azul); background: rgba(255,255,255,0.1); }
-  .pw-box button {
-    padding: 14px 28px; border: none; border-radius: 12px;
-    background: var(--gradiente); color: #fff;
-    font-family: inherit; font-weight: 600; font-size: 0.95rem;
-    cursor: pointer; transition: transform 0.2s, box-shadow 0.3s;
-  }
-  .pw-box button:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 8px 30px rgba(168,85,247,0.4);
-  }
-  #pw-error { color: #F87171; font-size: 0.85rem; min-height: 1.2em; }
-
-  #main-content { display: none; }
+  #main-content { display: block; }
 
   /* ═══ SCROLL ANIMATIONS ═══ */
   .reveal {
@@ -468,18 +423,6 @@
 </head>
 <body>
 
-<!-- ═══ PASSWORD ═══ -->
-<div id="password-screen">
-  <canvas id="pw-canvas"></canvas>
-  <img src="assets/logo.png" alt="Logo RED MIA">
-  <h2>Acceso para integrantes</h2>
-  <div class="pw-box">
-    <input type="password" id="pw-input" placeholder="Contraseña" autofocus>
-    <button onclick="checkPassword()">Entrar</button>
-  </div>
-  <div id="pw-error"></div>
-</div>
-
 <!-- ═══ MAIN ═══ -->
 <div id="main-content">
 
@@ -728,29 +671,6 @@
 </div>
 
 <script>
-// ═══ PASSWORD ═══
-function checkPassword() {
-  if (document.getElementById('pw-input').value === 'MIA-red26') {
-    document.getElementById('password-screen').style.display = 'none';
-    document.getElementById('main-content').style.display = 'block';
-    sessionStorage.setItem('mia-auth', '1');
-    initHeroCanvas();
-    initCtaCanvas();
-    initReveal();
-  } else {
-    document.getElementById('pw-error').textContent = 'Contraseña incorrecta';
-    document.getElementById('pw-input').value = '';
-    document.getElementById('pw-input').focus();
-  }
-}
-document.getElementById('pw-input').addEventListener('keydown', e => {
-  if (e.key === 'Enter') checkPassword();
-});
-if (sessionStorage.getItem('mia-auth') === '1') {
-  document.getElementById('password-screen').style.display = 'none';
-  document.getElementById('main-content').style.display = 'block';
-}
-
 // ═══ NEURAL NETWORK CANVAS ═══
 function createNetwork(canvasId, nodeCount) {
   const canvas = document.getElementById(canvasId);
@@ -828,9 +748,6 @@ function createNetwork(canvasId, nodeCount) {
 function initHeroCanvas() { createNetwork('hero-canvas', 80); }
 function initCtaCanvas() { createNetwork('cta-canvas', 50); }
 
-// Init password canvas immediately
-createNetwork('pw-canvas', 60);
-
 // ═══ SCROLL REVEAL ═══
 function initReveal() {
   const els = document.querySelectorAll('.reveal');
@@ -870,10 +787,8 @@ function moveSlide(dir) {
 }
 setInterval(() => moveSlide(1), 6000);
 
-// Init if already authenticated
-if (sessionStorage.getItem('mia-auth') === '1') {
-  initHeroCanvas(); initCtaCanvas(); initReveal();
-}
+// Init on load
+initHeroCanvas(); initCtaCanvas(); initReveal();
 </script>
 
 </body>
