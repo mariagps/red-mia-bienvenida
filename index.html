@@ -15,8 +15,8 @@
     --rosa: #EC4899;
     --cyan: #06B6D4;
     --bg-dark: #0B1120;
-    --text: #334155;
-    --text-light: #64748B;
+    --text: #1E293B;
+    --text-light: #475569;
     --gradiente: linear-gradient(135deg, var(--azul) 0%, var(--morado) 50%, var(--rosa) 100%);
     --gradiente-suave: linear-gradient(135deg, #EEF2FF 0%, #F5F3FF 50%, #FDF2F8 100%);
     --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
@@ -26,7 +26,7 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: 'Inter', system-ui, sans-serif;
-    color: var(--text); line-height: 1.7; font-size: 15px;
+    color: var(--text); line-height: 1.75; font-size: 17px;
     background: #FAFBFC; -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
@@ -53,7 +53,7 @@
     text-align: center; color: #fff;
   }
   #hero-canvas { position: absolute; inset: 0; z-index: 0; }
-  .hero-content { position: relative; z-index: 1; padding: 40px 24px; }
+  .hero-content { position: relative; z-index: 1; padding: 40px 24px; margin-top: -40px; }
   .hero-content img {
     width: 170px; margin-bottom: 28px;
     animation: float 6s ease-in-out infinite;
@@ -72,14 +72,14 @@
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   }
   .hero .subtitle {
-    font-size: 1.2rem; font-weight: 300; color: rgba(255,255,255,0.7);
+    font-size: 1.2rem; font-weight: 400; color: rgba(255,255,255,0.85);
     max-width: 500px; margin: 0 auto 20px;
   }
   .hero .claim {
     display: inline-block; padding: 10px 24px;
     border: 1px solid rgba(255,255,255,0.12);
     border-radius: 30px; font-size: 0.85rem;
-    color: rgba(255,255,255,0.55); letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.75); letter-spacing: 0.04em;
     backdrop-filter: blur(6px);
     background: rgba(255,255,255,0.03);
   }
@@ -95,7 +95,7 @@
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   }
   .stat-label {
-    font-size: 0.75rem; color: rgba(255,255,255,0.45);
+    font-size: 0.75rem; color: rgba(255,255,255,0.65);
     text-transform: uppercase; letter-spacing: 0.1em; margin-top: 2px;
   }
   .scroll-hint {
@@ -147,7 +147,7 @@
   h3 { font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
   p { margin-bottom: 16px; }
   p:last-child { margin-bottom: 0; }
-  .lead { font-size: 1.08rem; color: var(--text-light); max-width: 640px; }
+  .lead { font-size: 1.12rem; color: var(--text); max-width: 640px; }
   .gradient-text {
     background: var(--gradiente);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
@@ -214,7 +214,7 @@
     box-shadow: 0 4px 16px rgba(168,85,247,0.2);
   }
   .act-card h3 { font-size: 0.95rem; }
-  .act-card p { font-size: 0.85rem; color: var(--text-light); margin-bottom: 0; }
+  .act-card p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 0; }
 
   /* ═══ GRUPOS ═══ */
   .grupos-grid {
@@ -243,7 +243,7 @@
     border: 1px solid rgba(255,255,255,0.08);
   }
   .grupo-card h3 { color: #fff; font-size: 0.95rem; margin-bottom: 8px; }
-  .grupo-card p { font-size: 0.85rem; color: rgba(255,255,255,0.55); margin-bottom: 0; }
+  .grupo-card p { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 0; }
 
   /* ═══ QUE PODEMOS HACER POR TI ═══ */
   .value-grid {
@@ -272,7 +272,7 @@
     line-height: 1;
   }
   .value-card h3 { margin: 12px 0 8px; font-size: 1rem; }
-  .value-card p { font-size: 0.85rem; color: var(--text-light); margin-bottom: 0; }
+  .value-card p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 0; }
 
   /* ═══ HOJA DE RUTA TIMELINE ═══ */
   .timeline { margin-top: 32px; position: relative; padding-left: 40px; }
@@ -298,7 +298,7 @@
   .tl-item h3 { font-size: 1.05rem; margin-bottom: 8px; color: var(--text); }
   .tl-list { list-style: none; }
   .tl-list li {
-    font-size: 0.88rem; color: var(--text-light);
+    font-size: 0.92rem; color: var(--text-light);
     padding: 4px 0 4px 20px; position: relative;
   }
   .tl-list li::before {
@@ -370,8 +370,8 @@
   .cta-section > *:not(canvas) { position: relative; z-index: 1; }
   .cta-section h2 { color: #fff; font-size: 2.2rem; }
   .cta-section p {
-    color: rgba(255,255,255,0.75); max-width: 500px;
-    margin: 0 auto 32px; font-size: 1.08rem;
+    color: rgba(255,255,255,0.85); max-width: 500px;
+    margin: 0 auto 32px; font-size: 1.1rem;
   }
   .btn-form {
     display: inline-block; padding: 18px 44px;
@@ -434,6 +434,9 @@
       <h1><span>{RED} MIA</span></h1>
       <p class="subtitle">Red de Mujeres en Inteligencia Artificial</p>
       <div class="claim">Conectamos talentos, codificamos el cambio: entrenamos el modelo del mañana</div>
+      <div style="margin-top: 28px;">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfEQwvkCns6hEhg4dSLBzk0Pxhav5QSEvtlfBpBg8BU3-4ESA/viewform" class="btn-form" target="_blank" rel="noopener">Unirme a la lista de correo</a>
+      </div>
       <div class="hero-stats">
         <div class="stat-item">
           <div class="stat-num" id="counter-members">+100</div>
@@ -547,7 +550,7 @@
       <div class="reveal">
         <span class="section-label">Colabora</span>
         <h2>Grupos de trabajo</h2>
-        <p style="color: rgba(255,255,255,0.65); max-width: 600px;">Además de los encuentros mensuales, la red se organiza en grupos temáticos. Puedes participar en uno, varios o ninguno.</p>
+        <p style="color: rgba(255,255,255,0.8); max-width: 600px;">Además de los encuentros mensuales, la red se organiza en grupos temáticos. Puedes participar en uno, varios o ninguno.</p>
       </div>
       <div class="grupos-grid">
         <div class="grupo-card reveal reveal-delay-1">
